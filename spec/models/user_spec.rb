@@ -79,7 +79,7 @@ RSpec.describe User, type: :model do
       it '名が空だと登録できない' do
         @user.fast_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name は全角文字で設定してください')
+        expect(@user.errors.full_messages).to include('Fast name は全角文字で設定してください')
       end
       it '苗字に半角英数字が存在すると登録できない' do
         @user.last_name = 'abc123'
@@ -89,7 +89,7 @@ RSpec.describe User, type: :model do
       it '名に半角英数字が存在すると登録できない' do
         @user.fast_name = 'def456'
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name は全角文字で設定してください')
+        expect(@user.errors.full_messages).to include('Fast name は全角文字で設定してください')
       end
       it '苗字のフリガナが空だと登録できない' do
         @user.kana_last = ''
@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
       it '名のフリガナが空だと登録できない' do
         @user.kana_fast = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kana first は全角カタカナで設定してください')
+        expect(@user.errors.full_messages).to include('Kana fast は全角カタカナで設定してください')
       end
       it '苗字のフリガナに半角英数字が存在すると登録できない' do
         @user.kana_last = 'abc123'
@@ -109,7 +109,7 @@ RSpec.describe User, type: :model do
       it '名のフリガナに半角英数字が存在すると登録できない' do
         @user.kana_fast = 'def456'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kana first は全角カタカナで設定してください')
+        expect(@user.errors.full_messages).to include('Kana fast は全角カタカナで設定してください')
       end
       it '苗字のフリガナにひらがなが存在すると登録できない' do
         @user.kana_last = 'たなか'
@@ -119,7 +119,7 @@ RSpec.describe User, type: :model do
       it '名のフリガナにひらがなが存在すると登録できない' do
         @user.kana_fast = 'たろう'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kana first は全角カタカナで設定してください')
+        expect(@user.errors.full_messages).to include('Kana fast は全角カタカナで設定してください')
       end
       it '苗字のフリガナに漢字が存在すると登録できない' do
         @user.kana_last = '田中'
@@ -129,7 +129,7 @@ RSpec.describe User, type: :model do
       it '名のフリガナに漢字が存在すると登録できない' do
         @user.kana_fast = '太郎'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kana first は全角カタカナで設定してください')
+        expect(@user.errors.full_messages).to include('Kana fast は全角カタカナで設定してください')
       end
       it '生年月日が空だと登録できない' do
         @user.birthday = ''
