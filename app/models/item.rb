@@ -13,15 +13,9 @@ class Item < ApplicationRecord
     validates :name, length: { maximum: 40 }
     validates :explanation, length: { maximum: 1000 }
     validates :price, numericality: { only_integer:true, greater_than: 299, less_than: 10_000_000 }
-    validates :image, :category, :status, :shipping_charge, :shipment_source, :days
+    validates :image
     validates :category_id, :status_id, :shipping_charge_id, :shipment_source_id, :days_id, numericality: { other_than: 1}
 
 
   end
-  
-  
-  
-  
-  
-  
 end
