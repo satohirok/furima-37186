@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'items/index'
   root to: "items#index"
 
-  root "purchases#index"
   resources :purchases, only: [:index, :create]
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
