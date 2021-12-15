@@ -1,0 +1,12 @@
+FactoryBot.define do
+  factory :purchase_address do
+    postal_code { '123-4567' }
+    shipment_source_id { 1 }
+    municipalities { '江東区' }
+    house_number{ '大島1-1' }
+    building{ '森ビル111' }
+    tel_number{ '08012345678' }
+    user_id                   { '1' }
+    item_id                   { '1' }
+  end
+end
