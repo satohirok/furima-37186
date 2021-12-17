@@ -67,6 +67,12 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include('Tel number is invalid')
       end
 
+      it 'tel_numberに半角数字以外が含まれている場合は登録できない（※半角数字以外が一文字でも含まれていればOK）' do
+        @purchase_address.tel_number = '028-2423333'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Tel number is invalid')
+      end
+      
       it 'user_id が空では登録できない' do
        @purchase_address.user_id = ''
        @purchase_address.valid?
