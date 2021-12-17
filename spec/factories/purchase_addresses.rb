@@ -6,7 +6,6 @@ FactoryBot.define do
     house_number{ '大島1-1' }
     building{ '森ビル111' }
     tel_number{ '08012345678' }
-    item_id                   { '1' }
     token{"tok_abcdefghijk00000000000000000"}
   end
 end
