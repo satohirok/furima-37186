@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PurchaseAddress, type: :model do
   before do
-    @purchase_address = FactoryBot.build(:purchase_address)
+    user = FactoryBot.create(:user)
+    @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, item_id: item.id)
   end
 
   describe '商品の出品' do
@@ -60,6 +61,12 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include('Tel number is invalid')
       end
       
+      it 'tel_numberが9桁以下では登録できない' do
+        @purchase_address.tel_number = '02824233'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Tel number is invalid')
+      end
+
       it 'user_id が空では登録できない' do
        @purchase_address.user_id = ''
        @purchase_address.valid?
