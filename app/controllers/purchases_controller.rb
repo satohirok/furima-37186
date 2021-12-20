@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   
   before_action :get_item_infomation, only: [:index, :create]
-  before_action :move_to_index
+  before_action :move_to_index, only: :create
   before_action :authenticate_user!
 
   def index
