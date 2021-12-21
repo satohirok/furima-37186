@@ -1,12 +1,12 @@
 class PurchasesController < ApplicationController
   
   before_action :get_item_infomation, only: [:index, :create]
-  before_action :move_to_index, only: [:index, :create]
   before_action :authenticate_user!
-
+  before_action :move_to_index, only: [:index, :create]
+  
   def index
   @purchase_address = PurchaseAddress.new
- end
+  end
 
  def create
   @purchase_address = PurchaseAddress.new(purchase_params)
@@ -23,10 +23,8 @@ class PurchasesController < ApplicationController
   
   def move_to_index
     @item = Item.find(params[:item_id])
-    if (current_user.id == @item.user_id) || @item.purchase.present?
+    if (current_user == @item.user_id) || @item.purchase.present?
       redirect_to root_path
-    elsif user_signed_in? == false
-      redirect_to new_user_session_path 
     end
   end
 
